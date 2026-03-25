@@ -1,5 +1,13 @@
 # skill-review
 
+[![Claude Code Skill](https://img.shields.io/badge/Claude_Code-Skill-blueviolet?logo=anthropic&logoColor=white)](https://github.com/Charpup/skill-review)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![skill-vetter](https://img.shields.io/badge/dep-skill--vetter-blue?logo=github)](https://github.com/clawdbot/skills)
+[![value-first-gate](https://img.shields.io/badge/dep-value--first--gate-blue?logo=github)](https://github.com/Charpup/value-first-gate)
+[![inbox-triage](https://img.shields.io/badge/dep-inbox--triage-blue?logo=github)](https://github.com/Charpup/inbox-triage)
+[![Pure Prompt](https://img.shields.io/badge/type-Pure_Prompt-green)](https://github.com/Charpup/skill-review)
+[![Risk Level](https://img.shields.io/badge/risk-🟢_LOW-brightgreen)](https://github.com/Charpup/skill-review)
+
 A Claude Code skill that orchestrates the full lifecycle of evaluating and deploying new skills — from security audit to deployment decision to inbox cleanup.
 
 ## What it does
@@ -16,15 +24,15 @@ Phase 6: Execute  → Install to ~/.claude/skills/ OR archive + append value-rev
 Phase 7: Cleanup  → inbox-triage removes processed files
 ```
 
-## Prerequisites
+## Dependencies
 
-The following skills must be installed for full functionality:
+This skill orchestrates three other skills. Install them before using `skill-review`:
 
-| Skill | Required for |
-|-------|-------------|
-| [`skill-vetter`](https://github.com/clawdbot/skills) | Phase 2 — Security audit |
-| [`value-first-gate`](https://github.com/Charpup/skill-value-first-gate) | Phase 4 — Value evaluation |
-| `inbox-triage` | Phase 7 — Inbox cleanup |
+| Skill | Repo | Required for |
+|-------|------|-------------|
+| [`skill-vetter`](https://github.com/clawdbot/skills) | `clawdbot/skills` | Phase 2 — Security audit |
+| [`value-first-gate`](https://github.com/Charpup/value-first-gate) | `Charpup/value-first-gate` | Phase 4 — Value evaluation |
+| [`inbox-triage`](https://github.com/Charpup/inbox-triage) | `Charpup/inbox-triage` | Phase 7 — Inbox cleanup |
 
 Graceful degradation is built in — if a sub-skill is unavailable, the phase falls back to an inline checklist.
 
@@ -60,13 +68,11 @@ Every run appends a structured record to `value-review.md` and outputs a summary
 
 ## Installation
 
-Copy `SKILL.md` and `_meta.json` to `~/.claude/skills/skill-review/`.
-
-Or clone this repo:
-
 ```bash
 git clone https://github.com/Charpup/skill-review.git ~/.claude/skills/skill-review
 ```
+
+Or copy `SKILL.md` and `_meta.json` to `~/.claude/skills/skill-review/`.
 
 ## License
 
